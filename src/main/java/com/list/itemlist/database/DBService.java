@@ -2,15 +2,17 @@ package com.list.itemlist.database;
 
 import com.list.itemlist.model.Board;
 import com.list.itemlist.model.Item;
-import com.list.itemlist.model.User;
+import com.list.itemlist.model.MyUser;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DBService implements ItemDAO, BoardDAO, UserDao {
 
     @Override
@@ -172,15 +174,15 @@ public class DBService implements ItemDAO, BoardDAO, UserDao {
     }
 
     @Override
-    public User getUser(String login) {
+    public MyUser getUser(String login) {
         Session session = CreatingSessionFactory.getSessionFactory().openSession();
-        Criteria criteria = session.createCriteria(User.class);
-        return (User) criteria.add(Restrictions.eq("login", login)).uniqueResult();
+        Criteria criteria = session.createCriteria(MyUser.class);
+        return (MyUser) criteria.add(Restrictions.eq("login", login)).uniqueResult();
     }
 
     @Override
     public void insertUser(String login, String password, String email) {
         Session session = CreatingSessionFactory.getSessionFactory().openSession();
-        session.save(new User(login, password, email));
+        session.save(new MyUser(login, password, email));
     }
 }

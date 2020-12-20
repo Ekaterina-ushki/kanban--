@@ -3,23 +3,26 @@ package com.list.itemlist.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="users")
-public class User {
+@Table(name="usr")
+public class MyUser {
 
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
+
     @Column(name="login", unique = true)
     private String login;
+
     @Column(name="password")
     private String password;
+
     @Column(name="email")
     private String email;
 
-    public User(){}
+    public MyUser(){}
 
-    public User(String login, String password, String email) {
+    public MyUser(String login, String password, String email) {
         this.login = login;
         this.password = password;
         this.email = email;

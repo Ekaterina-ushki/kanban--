@@ -24,9 +24,9 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public ModelAndView main(@RequestParam("login") String login,
-                            @RequestParam("pass1") String pass1,
-                            @RequestParam("pass2") String pass2,
-                            @RequestParam("email") String email){
+                             @RequestParam("pass1") String pass1,
+                             @RequestParam("pass2") String pass2,
+                             @RequestParam("email") String email) {
 
         //clearErrors();
 
@@ -36,11 +36,4 @@ public class RegistrationController {
 
         return modelAndView;
     }
-
-    //private void clearErrors() {
-    //    req.setAttribute("loginErr", "");
-    //    req.setAttribute("pass1Err", "");
-    //    req.setAttribute("pass2Err", "");
-    //    req.setAttribute("emailErr", "");
-    //}
 }
